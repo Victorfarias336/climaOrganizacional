@@ -12,14 +12,14 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String nomeUsuario;
+    private String nome;
     private String senha;
     
     public Usuario(){}
 
-    public Usuario(int id, String nomeUsuario, String senha) {
+    public Usuario(int id, String nome, String senha) {
         this.id = id;
-        this.nomeUsuario = nomeUsuario;
+        this.nome = nome;
         this.senha = senha;
     }
 
@@ -31,12 +31,12 @@ public class Usuario implements Serializable {
         this.id = id;
     }
 
-    public String getNomeUsuario() {
-        return nomeUsuario;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeUsuario(String nomeUsuario) {
-        this.nomeUsuario = nomeUsuario;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getSenha() {

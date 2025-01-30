@@ -1,1 +1,10 @@
+br\prat\jpaController\UsuarioJpaController.class
+br\prat\controller\controller.class
+br\prat\persistence\controllerPersistence.class
+br\prat\entitys\Usuario.class
+br\prat\GUI\telaLogin.class
+br\prat\jpaController\exceptions\NonexistentEntityException.class
 br\prat\climaorganizacional\ClimaOrganizacional.class
+br\prat\GUI\telaLogin$1.class
+br\prat\jpaController\exceptions\IllegalOrphanException.class
+br\prat\jpaController\exceptions\PreexistingEntityException.class
