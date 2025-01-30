@@ -32,4 +32,11 @@ public class controller {
         }
         return mensagem;
     }   
+
+    public void cadastrar(String nomeCad, String senhaCad) {
+        Usuario user = new Usuario();
+        user.setNome(nomeCad);
+        user.setSenha(senhaCad);
+        controlPersis.cadastrar(user);
+    }
 }

@@ -12,6 +12,10 @@ public class controllerPersistence {
         List<Usuario> listaUsuario = usuJpa.findUsuarioEntities();
         return listaUsuario;
     }
+
+    public void cadastrar(Usuario user) {
+        usuJpa.create(user);
+    }
     
     
 }
