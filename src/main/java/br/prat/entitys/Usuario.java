@@ -1,8 +1,16 @@
 package br.prat.entitys;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import java.io.Serializable;
 
-public class Usuario {
+@Entity
+public class Usuario implements Serializable {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nomeUsuario;
     private String senha;
