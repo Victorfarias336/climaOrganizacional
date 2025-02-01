@@ -1,6 +1,7 @@
 package br.prat.GUI;
 
 import br.prat.controller.controller;
+import br.prat.entitys.Usuario;
 
 
 public class telaLogin extends javax.swing.JFrame {
@@ -125,8 +126,25 @@ public class telaLogin extends javax.swing.JFrame {
         char[] pass = txtSenha.getPassword();
         String senha = new String(pass);
         
-        String mensagem = control.validarUsuario(nome, senha);
-        txtMensagem.setText(mensagem);
+        Usuario usr = control.validarUsuario(nome, senha);
+        
+        if(usr != null){
+            String tipo = usr.getUmtipo().getTipo();
+            if(tipo.equals("admin")){
+                telaAdmin tAdmin = new telaAdmin(control, usr);
+                tAdmin.setVisible(true);
+                tAdmin.setLocationRelativeTo(null);
+                this.dispose();
+            }
+            if(tipo.equals("user")){
+                telaFeedback tFeed = new telaFeedback(control, usr);
+                tFeed.setVisible(true);
+                tFeed.setLocationRelativeTo(null);
+                this.dispose();
+            }  
+        }else{
+            txtMensagem.setText("usurio ou senha incorretos");
+        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed

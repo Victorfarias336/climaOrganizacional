@@ -12,25 +12,31 @@ public class controller {
         controlPersis = new controllerPersistence();
     }
     
-    String mensagem = "";
-    public String validarUsuario(String nome, String senha) {
+    public Usuario validarUsuario(String nome, String senha) {
+        //String mensagem = "";
+        Usuario usr = null;
         List<Usuario> listaUsuario = controlPersis.buscaUsuario();
         for(Usuario usu : listaUsuario){
             if(usu.getNome().equals(nome)){
                 if(usu.getSenha().equals(senha)){
-                    mensagem = "usuario encontrado";
-                    return mensagem;
+                    /*mensagem = "usuario encontrado";
+                    return mensagem;*/
+                    usr = usu;
+                    return usr;
                 }
                 else{
-                    mensagem = "senha ou nome incorreto";
-                    return mensagem;
+                    //mensagem = "senha ou nome incorreto";
+                    //return mensagem;
+                    usr = null;
+                    return usr;
                 }
             }
             else{
-                mensagem = "usuario não encontrado";
+                //mensagem = "usuario não encontrado";
+                usr = null;
             }
         }
-        return mensagem;
+        return usr;
     }   
 
     public void cadastrar(String nomeCad, String senhaCad) {

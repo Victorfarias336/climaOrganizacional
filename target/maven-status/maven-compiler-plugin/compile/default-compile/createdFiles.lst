@@ -1,3 +1,4 @@
+br\prat\GUI\telaAdmin.class
 br\prat\controller\controller.class
 br\prat\entitys\tipoUsuario.class
 br\prat\entitys\Usuario.class
@@ -7,10 +8,13 @@ br\prat\GUI\telaCadastro.class
 br\prat\jpaController\tipoUsuarioJpaController.class
 br\prat\jpaController\UsuarioJpaController.class
 br\prat\GUI\telaCadastro$1.class
+br\prat\GUI\gerenciaUsuarios.class
 br\prat\GUI\telaLogin$2.class
 br\prat\persistence\controllerPersistence.class
+br\prat\GUI\dashboardFeedbacks.class
 br\prat\jpaController\exceptions\NonexistentEntityException.class
 br\prat\GUI\telaCadastro$2.class
 br\prat\GUI\telaLogin$1.class
 br\prat\jpaController\exceptions\IllegalOrphanException.class
+br\prat\GUI\telaFeedback.class
 br\prat\jpaController\exceptions\PreexistingEntityException.class
