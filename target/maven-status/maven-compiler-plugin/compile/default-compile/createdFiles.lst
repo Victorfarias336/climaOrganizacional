@@ -1,8 +1,10 @@
 br\prat\controller\controller.class
+br\prat\entitys\tipoUsuario.class
 br\prat\entitys\Usuario.class
 br\prat\GUI\telaLogin.class
 br\prat\climaorganizacional\ClimaOrganizacional.class
 br\prat\GUI\telaCadastro.class
+br\prat\jpaController\tipoUsuarioJpaController.class
 br\prat\jpaController\UsuarioJpaController.class
 br\prat\GUI\telaCadastro$1.class
 br\prat\GUI\telaLogin$2.class
