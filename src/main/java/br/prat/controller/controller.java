@@ -1,6 +1,7 @@
 package br.prat.controller;
 
 import br.prat.entitys.Usuario;
+import br.prat.entitys.tipoUsuario;
 import br.prat.persistence.controllerPersistence;
 import java.util.List;
 
@@ -39,10 +40,17 @@ public class controller {
         return usr;
     }   
 
-    public void cadastrar(String nomeCad, String senhaCad) {
+    public void cadastroUser(String nomeCad, String senhaCad) {
         Usuario user = new Usuario();
+        tipoUsuario cadUsr = new tipoUsuario();
+        
+        cadUsr.setId(2);
+        cadUsr.setDescrição("para usuario user");
+        cadUsr.setTipo("user");
+        
         user.setNome(nomeCad);
         user.setSenha(senhaCad);
+        user.setUmtipo(cadUsr);
         controlPersis.cadastrar(user);
     }
 }

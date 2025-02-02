@@ -16,9 +16,9 @@ public class telaCadastro extends javax.swing.JFrame {
 
     controller control;
     
-    public telaCadastro() {
+    public telaCadastro(controller control) {
         initComponents();
-        control = new controller();
+        this.control = control;
     }
 
     /**
@@ -122,7 +122,7 @@ public class telaCadastro extends javax.swing.JFrame {
         char[] passCad = txtCadSenha.getPassword();
         String senhaCad = new String(passCad);
         
-        control.cadastrar(nomeCad, senhaCad);
+        control.cadastroUser(nomeCad, senhaCad);
         
         JOptionPane optionPane = new JOptionPane("guardado corretamente");
         optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);

@@ -149,7 +149,7 @@ public class telaLogin extends javax.swing.JFrame {
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
 
-        telaCadastro cadastro = new telaCadastro();
+        telaCadastro cadastro = new telaCadastro(control);
         cadastro.setVisible(true);
         cadastro.setLocationRelativeTo(null);
         
