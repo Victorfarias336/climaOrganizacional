@@ -4,6 +4,7 @@
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <class>br.prat.entitys.Usuario</class>
     <class>br.prat.entitys.tipoUsuario</class>
+    <class>br.prat.entitys.Feedback</class>
     <properties>
       <property name="jakarta.persistence.jdbc.url" value="jdbc:derby://localhost:1527/feedback"/>
       <property name="jakarta.persistence.jdbc.user" value="adm"/>

@@ -1,8 +1,10 @@
 package br.prat.controller;
 
+import br.prat.entitys.Feedback;
 import br.prat.entitys.Usuario;
 import br.prat.entitys.tipoUsuario;
 import br.prat.persistence.controllerPersistence;
+import java.util.Date;
 import java.util.List;
 
 
@@ -52,5 +54,18 @@ public class controller {
         user.setSenha(senhaCad);
         user.setUmtipo(cadUsr);
         controlPersis.cadastrar(user);
+    }
+
+    public void criarFeedback(String usua, int perg1, int perg2, int perg3, int perg4, String aMelhorar) {
+        Feedback fdbck = new Feedback();
+        fdbck.setUsuario(usua);
+        fdbck.setPerg1(perg1);
+        fdbck.setPerg2(perg2);
+        fdbck.setPerg3(perg3);
+        fdbck.setPerg4(perg4);
+        fdbck.setData(new Date(System.currentTimeMillis()));
+        fdbck.setaMelhorar(aMelhorar);
+        
+        controlPersis.criarFeedback(fdbck);
     }
 }
