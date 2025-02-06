@@ -1,11 +1,17 @@
-package br.prat.GUI;
+package br.prat.GUI.AdminManage;
 
+import br.prat.controller.controller;
+import br.prat.entitys.Usuario;
 
-public class gerenciaUsuarios extends javax.swing.JFrame {
+public class dashboardFeedbacks extends javax.swing.JFrame {
 
+    controller control;
+    Usuario usr;
 
-    public gerenciaUsuarios() {
+    public dashboardFeedbacks(controller control, Usuario usr) {
         initComponents();
+        this.control = control;
+        this.usr = usr;
     }
 
     /**
@@ -32,7 +38,6 @@ public class gerenciaUsuarios extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

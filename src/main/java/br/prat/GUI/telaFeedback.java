@@ -27,23 +27,7 @@ public class telaFeedback extends javax.swing.JFrame {
         pergunta2 = new javax.swing.ButtonGroup();
         pergunta3 = new javax.swing.ButtonGroup();
         pergunta4 = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtOpcional = new javax.swing.JTextArea();
-        jLabel6 = new javax.swing.JLabel();
-        p1Btn1 = new javax.swing.JRadioButton();
-        p1Btn2 = new javax.swing.JRadioButton();
-        p1Btn3 = new javax.swing.JRadioButton();
-        p1Btn4 = new javax.swing.JRadioButton();
-        p1Btn5 = new javax.swing.JRadioButton();
-        p2Btn1 = new javax.swing.JRadioButton();
-        p2Btn2 = new javax.swing.JRadioButton();
-        p2Btn3 = new javax.swing.JRadioButton();
-        p2Btn4 = new javax.swing.JRadioButton();
+        jPanel1 = new javax.swing.JPanel();
         p2Btn5 = new javax.swing.JRadioButton();
         p3Btn1 = new javax.swing.JRadioButton();
         p3Btn2 = new javax.swing.JRadioButton();
@@ -54,10 +38,27 @@ public class telaFeedback extends javax.swing.JFrame {
         p4Btn2 = new javax.swing.JRadioButton();
         p4Btn3 = new javax.swing.JRadioButton();
         p4Btn4 = new javax.swing.JRadioButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtOpcional = new javax.swing.JTextArea();
         p4Btn5 = new javax.swing.JRadioButton();
         btnConfirmar = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         lblNome = new javax.swing.JLabel();
+        p1Btn1 = new javax.swing.JRadioButton();
         btnLogout = new javax.swing.JButton();
+        p1Btn2 = new javax.swing.JRadioButton();
+        p1Btn3 = new javax.swing.JRadioButton();
+        p1Btn4 = new javax.swing.JRadioButton();
+        p1Btn5 = new javax.swing.JRadioButton();
+        p2Btn1 = new javax.swing.JRadioButton();
+        p2Btn2 = new javax.swing.JRadioButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        p2Btn3 = new javax.swing.JRadioButton();
+        p2Btn4 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -65,49 +66,6 @@ public class telaFeedback extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
-
-        jLabel1.setText("Feedback colaborador");
-
-        jLabel2.setText("Quão satisfeito está com a empresa?");
-
-        jLabel3.setText("Quão satisfeito está com seu setor?");
-
-        jLabel4.setText("Quão satisfeito está com sua liderança?");
-
-        jLabel5.setText("Quão satisfeito está com sua função?");
-
-        txtOpcional.setColumns(20);
-        txtOpcional.setRows(5);
-        jScrollPane1.setViewportView(txtOpcional);
-
-        jLabel6.setText("Diga algo que deve melhorar na empresa ou no seu ambiente de trabalho(opcional)");
-
-        pergunta1.add(p1Btn1);
-        p1Btn1.setText("1");
-
-        pergunta1.add(p1Btn2);
-        p1Btn2.setText("2");
-
-        pergunta1.add(p1Btn3);
-        p1Btn3.setText("3");
-
-        pergunta1.add(p1Btn4);
-        p1Btn4.setText("4");
-
-        pergunta1.add(p1Btn5);
-        p1Btn5.setText("5");
-
-        pergunta2.add(p2Btn1);
-        p2Btn1.setText("1");
-
-        pergunta2.add(p2Btn2);
-        p2Btn2.setText("2");
-
-        pergunta2.add(p2Btn3);
-        p2Btn3.setText("3");
-
-        pergunta2.add(p2Btn4);
-        p2Btn4.setText("4");
 
         pergunta2.add(p2Btn5);
         p2Btn5.setText("5");
@@ -139,6 +97,10 @@ public class telaFeedback extends javax.swing.JFrame {
         pergunta4.add(p4Btn4);
         p4Btn4.setText("4");
 
+        txtOpcional.setColumns(20);
+        txtOpcional.setRows(5);
+        jScrollPane1.setViewportView(txtOpcional);
+
         pergunta4.add(p4Btn5);
         p4Btn5.setText("5");
 
@@ -149,8 +111,13 @@ public class telaFeedback extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setText("Diga algo que deve melhorar na empresa ou no seu ambiente de trabalho(opcional)");
+
         lblNome.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNome.setText(".");
+
+        pergunta1.add(p1Btn1);
+        p1Btn1.setText("1");
 
         btnLogout.setText("logout");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -159,89 +126,118 @@ public class telaFeedback extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(36, 36, 36)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
+        pergunta1.add(p1Btn2);
+        p1Btn2.setText("2");
+
+        pergunta1.add(p1Btn3);
+        p1Btn3.setText("3");
+
+        pergunta1.add(p1Btn4);
+        p1Btn4.setText("4");
+
+        pergunta1.add(p1Btn5);
+        p1Btn5.setText("5");
+
+        pergunta2.add(p2Btn1);
+        p2Btn1.setText("1");
+
+        pergunta2.add(p2Btn2);
+        p2Btn2.setText("2");
+
+        jLabel1.setText("Feedback colaborador");
+
+        jLabel2.setText("Quão satisfeito está com a empresa?");
+
+        jLabel3.setText("Quão satisfeito está com seu setor?");
+
+        jLabel4.setText("Quão satisfeito está com sua liderança?");
+
+        jLabel5.setText("Quão satisfeito está com sua função?");
+
+        pergunta2.add(p2Btn3);
+        p2Btn3.setText("3");
+
+        pergunta2.add(p2Btn4);
+        p2Btn4.setText("4");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(37, 37, 37)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel4)
                                 .addComponent(jLabel5)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(p1Btn1)
-                                    .addGap(49, 49, 49)
-                                    .addComponent(p1Btn2)
-                                    .addGap(49, 49, 49)
-                                    .addComponent(p1Btn3))
-                                .addComponent(jLabel3)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(p2Btn1)
-                                    .addGap(49, 49, 49)
-                                    .addComponent(p2Btn2)
-                                    .addGap(49, 49, 49)
-                                    .addComponent(p2Btn3))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(p3Btn1)
-                                    .addGap(49, 49, 49)
-                                    .addComponent(p3Btn2)
-                                    .addGap(49, 49, 49)
-                                    .addComponent(p3Btn3))
                                 .addComponent(jLabel6)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(p4Btn1)
+                                .addComponent(jLabel2)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(p1Btn1)
+                                            .addGap(49, 49, 49)
+                                            .addComponent(p1Btn2)
+                                            .addGap(49, 49, 49)
+                                            .addComponent(p1Btn3))
+                                        .addComponent(jLabel3)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(p2Btn1)
+                                            .addGap(49, 49, 49)
+                                            .addComponent(p2Btn2)
+                                            .addGap(49, 49, 49)
+                                            .addComponent(p2Btn3))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(p3Btn1)
+                                            .addGap(49, 49, 49)
+                                            .addComponent(p3Btn2)
+                                            .addGap(49, 49, 49)
+                                            .addComponent(p3Btn3))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(p4Btn1)
+                                            .addGap(49, 49, 49)
+                                            .addComponent(p4Btn2)
+                                            .addGap(49, 49, 49)
+                                            .addComponent(p4Btn3)))
                                     .addGap(49, 49, 49)
-                                    .addComponent(p4Btn2)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(p1Btn4)
+                                        .addComponent(p2Btn4)
+                                        .addComponent(p3Btn4)
+                                        .addComponent(p4Btn4))
                                     .addGap(49, 49, 49)
-                                    .addComponent(p4Btn3))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(228, 228, 228)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(p2Btn4)
-                                            .addGap(49, 49, 49)
-                                            .addComponent(p2Btn5))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(p3Btn4)
-                                            .addGap(49, 49, 49)
-                                            .addComponent(p3Btn5))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(p4Btn4)
-                                            .addGap(49, 49, 49)
-                                            .addComponent(p4Btn5))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(p1Btn4)
-                                            .addGap(49, 49, 49)
-                                            .addComponent(p1Btn5))))))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addContainerGap()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(p2Btn5)
+                                        .addComponent(p1Btn5)
+                                        .addComponent(p3Btn5)
+                                        .addComponent(p4Btn5)))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGap(410, 410, 410)
                             .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
                         .addComponent(btnLogout)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(111, 111, 111)
                         .addComponent(jLabel1)
                         .addGap(72, 72, 72)
                         .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(36, 36, 36))
+                .addGap(35, 35, 35))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(lblNome)
                     .addComponent(btnLogout))
                 .addGap(23, 23, 23)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(p1Btn1)
                     .addComponent(p1Btn2)
                     .addComponent(p1Btn3)
@@ -250,7 +246,7 @@ public class telaFeedback extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(p2Btn1)
                     .addComponent(p2Btn2)
                     .addComponent(p2Btn3)
@@ -259,7 +255,7 @@ public class telaFeedback extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(p3Btn1)
                     .addComponent(p3Btn2)
                     .addComponent(p3Btn3)
@@ -268,7 +264,7 @@ public class telaFeedback extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(p4Btn1)
                     .addComponent(p4Btn2)
                     .addComponent(p4Btn3)
@@ -280,7 +276,18 @@ public class telaFeedback extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -313,6 +320,7 @@ public class telaFeedback extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblNome;
     private javax.swing.JRadioButton p1Btn1;
