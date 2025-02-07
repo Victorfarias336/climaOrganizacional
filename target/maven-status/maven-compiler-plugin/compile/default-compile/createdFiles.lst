@@ -13,6 +13,7 @@ br\prat\jpaController\tipoUsuarioJpaController.class
 br\prat\GUI\dialogSalvar.class
 br\prat\GUI\telaLogin$2.class
 br\prat\persistence\controllerPersistence.class
+br\prat\GUI\AdminManage\tableFeedback$2.class
 br\prat\GUI\telaFeedback$1.class
 br\prat\GUI\telaCadastro$2.class
 br\prat\GUI\telaAdmin$5.class
@@ -21,10 +22,12 @@ br\prat\jpaController\exceptions\PreexistingEntityException.class
 br\prat\GUI\telaAdmin$2.class
 br\prat\controller\controller.class
 br\prat\jpaController\FeedbackJpaController.class
+br\prat\GUI\AdminManage\tableFeedback$1.class
 br\prat\GUI\dialogSalvar$2.class
 br\prat\GUI\telaFeedback$2.class
 br\prat\jpaController\UsuarioJpaController.class
 br\prat\GUI\AdminManage\dashboardFeedbacks.class
+br\prat\GUI\AdminManage\tableFeedback$3.class
 br\prat\GUI\telaCadastro$1.class
 br\prat\GUI\telaFeedback$3.class
 br\prat\GUI\telaAdmin$4.class

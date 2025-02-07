@@ -68,4 +68,8 @@ public class controller {
         
         controlPersis.criarFeedback(fdbck);
     }
+
+    public List<Feedback> trazerFeedbcks() {
+        return controlPersis.buscaFeedback();
+    }
 }

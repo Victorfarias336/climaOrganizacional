@@ -1,13 +1,17 @@
 package br.prat.GUI.AdminManage;
 
+import br.prat.GUI.telaAdmin;
 import br.prat.controller.controller;
+import br.prat.entitys.Feedback;
 import br.prat.entitys.Usuario;
-
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 public class tableFeedback extends javax.swing.JFrame {
+
     Usuario usr;
     controller control;
-  
+
     public tableFeedback(controller control, Usuario usr) {
         initComponents();
         this.control = control;
@@ -23,24 +27,144 @@ public class tableFeedback extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtableFeedbcks = new javax.swing.JTable();
+        btnRecarrega = new javax.swing.JButton();
+        btnVolta = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+
+        jLabel1.setText("Feedback dos colaboradores");
+
+        jtableFeedbcks.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jtableFeedbcks);
+
+        btnRecarrega.setText("Recarregar");
+        btnRecarrega.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecarregaActionPerformed(evt);
+            }
+        });
+
+        btnVolta.setText("Voltar");
+        btnVolta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnRecarrega, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVolta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(25, 25, 25))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(281, 281, 281)
+                .addComponent(jLabel1)
+                .addGap(269, 269, 269))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(btnRecarrega, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(btnVolta, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
+    private void btnVoltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltaActionPerformed
+        telaAdmin teladm = new telaAdmin(control, usr);
+
+        teladm.setVisible(true);
+        teladm.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnVoltaActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        carregarTabela();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnRecarregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecarregaActionPerformed
+        carregarTabela();
+    }//GEN-LAST:event_btnRecarregaActionPerformed
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRecarrega;
+    private javax.swing.JButton btnVolta;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jtableFeedbcks;
     // End of variables declaration//GEN-END:variables
+
+    private void carregarTabela() {
+
+        //definir a forma que queremos que tenha a tabela
+        DefaultTableModel tabelFeed = new DefaultTableModel() {
+            //quais linhas e colunas não serão editaveis
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        String titulos[] = {"usuario", "data", "empresa", "setor", "liderança", "função",
+            "a melhorar"};
+        tabelFeed.setColumnIdentifiers(titulos);
+
+        List<Feedback> listaFeed = control.trazerFeedbcks();
+
+        if (listaFeed != null) {
+            for (Feedback feed : listaFeed) {
+                Object[] objeto = {feed.getUsuario(), feed.getData(), feed.getPerg1(),
+                    feed.getPerg2(), feed.getPerg3(), feed.getPerg4(), feed.getaMelhorar()};
+                tabelFeed.addRow(objeto);
+            }
+            jtableFeedbcks.setModel(tabelFeed);
+        }
+    }
 }

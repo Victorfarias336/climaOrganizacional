@@ -11,7 +11,7 @@ import java.util.List;
 public class controllerPersistence {
     UsuarioJpaController usuJpa = new UsuarioJpaController();
     tipoUsuarioJpaController tipoJpa = new tipoUsuarioJpaController();
-    FeedbackJpaController feed = new FeedbackJpaController();
+    FeedbackJpaController feedJpa = new FeedbackJpaController();
 
     public List<Usuario> buscaUsuario() {
         List<Usuario> listaUsuario = usuJpa.findUsuarioEntities();
@@ -23,8 +23,13 @@ public class controllerPersistence {
     }
 
     public void criarFeedback(Feedback fdbck) {
-        feed.create(fdbck);
+        feedJpa.create(fdbck);
         }
+
+    public List<Feedback> buscaFeedback() {
+        List<Feedback> listaFeedbck = feedJpa.findFeedbackEntities();
+        return listaFeedbck;
+    }
     
     
 }
