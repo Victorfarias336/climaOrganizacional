@@ -1,7 +1,12 @@
 package br.prat.GUI.AdminManage;
 
+import br.prat.GUI.telaAdmin;
 import br.prat.controller.controller;
 import br.prat.entitys.Usuario;
+import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class gerenciaUsuarios extends javax.swing.JFrame {
 
@@ -23,23 +28,244 @@ public class gerenciaUsuarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtabUsuarios = new javax.swing.JTable();
+        btnCreateUser = new javax.swing.JButton();
+        btnEditUser = new javax.swing.JButton();
+        btnDelUser = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
+        btnRecarrega = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+
+        jLabel1.setText("Gerenciar Usuarios");
+
+        jtabUsuarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jtabUsuarios);
+
+        btnCreateUser.setText("Criar novo usuario");
+        btnCreateUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateUserActionPerformed(evt);
+            }
+        });
+
+        btnEditUser.setText("Editar usuario");
+        btnEditUser.setPreferredSize(new java.awt.Dimension(127, 23));
+        btnEditUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditUserActionPerformed(evt);
+            }
+        });
+
+        btnDelUser.setText("excluir usuario");
+        btnDelUser.setPreferredSize(new java.awt.Dimension(127, 23));
+        btnDelUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDelUserActionPerformed(evt);
+            }
+        });
+
+        btnVoltar.setText("Voltar ao menu");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
+
+        btnRecarrega.setText("recarregar tabela");
+        btnRecarrega.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecarregaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnVoltar)
+                        .addGap(132, 132, 132)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnCreateUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnRecarrega, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnDelUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEditUser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(btnVoltar))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnRecarrega, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCreateUser, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnEditUser, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnDelUser, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void mensagem(String mensagem, String tipo, String titulo){
+        JOptionPane optionPane = new JOptionPane(mensagem);
+            if (tipo.equals("Info")){
+                optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+            }
+            else if (tipo.equals("Error")){
+                optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+            }   
+                JDialog dialog = optionPane.createDialog(titulo);
+                dialog.setAlwaysOnTop(true);
+                dialog.setVisible(true);
+    }
+    
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        carregarTabela();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnRecarregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecarregaActionPerformed
+        carregarTabela();
+    }//GEN-LAST:event_btnRecarregaActionPerformed
+
+    private void btnCreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateUserActionPerformed
+        criarUsuario cria = new criarUsuario(control);
+        
+        cria.setVisible(true);
+        cria.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnCreateUserActionPerformed
+
+    private void btnEditUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditUserActionPerformed
+        
+        
+        if (jtabUsuarios.getRowCount() > 0) {
+            if (jtabUsuarios.getSelectedRow() != -1) {
+                int id_usu = Integer.parseInt(
+                        String.valueOf(
+                                jtabUsuarios.getValueAt(
+                                        jtabUsuarios.getSelectedRow(), 0)));
+                
+                editarUsuario editUsu = new editarUsuario(control, id_usu);
+                editUsu.setVisible(true);
+                editUsu.setLocationRelativeTo(null);
+                   
+            }else{
+                mensagem("não foi selecionado nenhum registro", "Error", "erro ao editar");
+            }
+        }else{
+            mensagem("tabela vazia nada para eliminar", "Error", "erro ao editar");
+        }
+    }//GEN-LAST:event_btnEditUserActionPerformed
+
+    private void btnDelUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelUserActionPerformed
+        if (jtabUsuarios.getRowCount() > 0) {
+            if (jtabUsuarios.getSelectedRow() != -1) {
+                int id_usr = Integer.parseInt(
+                        String.valueOf(
+                                jtabUsuarios.getValueAt(
+                                        jtabUsuarios.getSelectedRow(), 0)));
+                
+                control.excluirUser(id_usr);
+                mensagem("apagado com sucesso", "Info", "dado apagado");
+                carregarTabela();
+            }else{
+                mensagem("não foi selecionado nenhum registro", "Error", "erro ao apagar");
+            }
+        }else{
+            mensagem("tabela vazia nada para eliminar", "Error", "erro ao apagar");
+        }
+    }//GEN-LAST:event_btnDelUserActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        telaAdmin telAd = new telaAdmin(control, usr);
+        
+        telAd.setVisible(true);
+        telAd.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnVoltarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCreateUser;
+    private javax.swing.JButton btnDelUser;
+    private javax.swing.JButton btnEditUser;
+    private javax.swing.JButton btnRecarrega;
+    private javax.swing.JButton btnVoltar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jtabUsuarios;
     // End of variables declaration//GEN-END:variables
+
+    private void carregarTabela() {
+        //definir a forma que queremos que tenha a tabela
+        DefaultTableModel tabelFeed = new DefaultTableModel() {
+            //quais linhas e colunas não serão editaveis
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        String titulos[] = {"Id","Nome", "Senha", "tipo"};
+        tabelFeed.setColumnIdentifiers(titulos);
+
+        List<Usuario> listaUsu = control.trazerUsuarios();
+
+        if (listaUsu != null) {
+            for (Usuario usu : listaUsu) {
+                Object[] objeto = {usu.getId(),usu.getNome(),usu.getSenha(),usu.getUmtipo().getTipo()};
+                tabelFeed.addRow(objeto);
+            }
+            jtabUsuarios.setModel(tabelFeed);
+        }
+    }
 }

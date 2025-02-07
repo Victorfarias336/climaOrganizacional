@@ -10,7 +10,9 @@ import java.util.List;
 
 public class controller {
     controllerPersistence controlPersis;
-
+    private final Usuario user = new Usuario();
+    private tipoUsuario tipUsr = new tipoUsuario();
+    
     public controller() {
         controlPersis = new controllerPersistence();
     }
@@ -18,7 +20,7 @@ public class controller {
     public Usuario validarUsuario(String nome, String senha) {
         //String mensagem = "";
         Usuario usr = null;
-        List<Usuario> listaUsuario = controlPersis.buscaUsuario();
+        List<Usuario> listaUsuario = controlPersis.buscaUsuarios();
         for(Usuario usu : listaUsuario){
             if(usu.getNome().equals(nome)){
                 if(usu.getSenha().equals(senha)){
@@ -43,16 +45,14 @@ public class controller {
     }   
 
     public void cadastroUser(String nomeCad, String senhaCad) {
-        Usuario user = new Usuario();
-        tipoUsuario cadUsr = new tipoUsuario();
         
-        cadUsr.setId(2);
-        cadUsr.setDescrição("para usuario user");
-        cadUsr.setTipo("user");
+        tipUsr.setId(2);
+        tipUsr.setDescrição("para usuario user");
+        tipUsr.setTipo("user");
         
         user.setNome(nomeCad);
         user.setSenha(senhaCad);
-        user.setUmtipo(cadUsr);
+        user.setUmtipo(tipUsr);
         controlPersis.cadastrar(user);
     }
 
@@ -71,5 +71,55 @@ public class controller {
 
     public List<Feedback> trazerFeedbcks() {
         return controlPersis.buscaFeedback();
+    }
+
+    public List<Usuario> trazerUsuarios() {
+        return controlPersis.buscaUsuarios();
+    }
+
+    public List<tipoUsuario> trazerTipos() {
+        return controlPersis.buscaTipo();
+    }
+
+    public void criarUser(String nome, String senha, String tipo) {
+        user.setNome(nome);
+        user.setSenha(senha);
+        
+        tipUsr = this.trazerTipo(tipo);
+        if(tipUsr != null){
+            user.setUmtipo(tipUsr);
+        }
+        controlPersis.cadastrar(user);
+    }
+
+    private tipoUsuario trazerTipo(String tipo) {
+        List<tipoUsuario> listTip = controlPersis.buscaTipo();
+        //compara string tipo com os tipos da tabela e retorna o que for igual
+        for(tipoUsuario tip : listTip){
+            if(tip.getTipo().equals(tipo)){
+                return tip;
+            }
+        }
+        return null;
+    }
+
+    public Usuario trazerUsuario(int id_usu) {
+        return controlPersis.buscaUsuario(id_usu);
+    }
+
+    public void editaUser(Usuario usu, String nome, String senha, String tipo) {
+        usu.setNome(nome);
+        usu.setSenha(senha);
+        
+        tipUsr = this.trazerTipo(tipo);
+        if(tipUsr != null){
+            usu.setUmtipo(tipUsr);
+        }
+        
+        controlPersis.editaUser(usu);
+    }
+
+    public void excluirUser(int id_usr) {
+        controlPersis.excluirUser(id_usr);
     }
 }

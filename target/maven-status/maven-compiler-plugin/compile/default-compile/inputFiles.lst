@@ -1,5 +1,6 @@
 C:\Users\User\Documents\NetBeansProjects\ClimaOrganizacional\src\main\java\br\prat\GUI\telaFeedback.java
 C:\Users\User\Documents\NetBeansProjects\ClimaOrganizacional\src\main\java\br\prat\entitys\tipoUsuario.java
+C:\Users\User\Documents\NetBeansProjects\ClimaOrganizacional\src\main\java\br\prat\GUI\AdminManage\editarUsuario.java
 C:\Users\User\Documents\NetBeansProjects\ClimaOrganizacional\src\main\java\br\prat\entitys\Usuario.java
 C:\Users\User\Documents\NetBeansProjects\ClimaOrganizacional\src\main\java\br\prat\GUI\dialogSalvar.java
 C:\Users\User\Documents\NetBeansProjects\ClimaOrganizacional\src\main\java\br\prat\GUI\AdminManage\tableFeedback.java
@@ -14,6 +15,7 @@ C:\Users\User\Documents\NetBeansProjects\ClimaOrganizacional\src\main\java\br\pr
 C:\Users\User\Documents\NetBeansProjects\ClimaOrganizacional\src\main\java\br\prat\jpaController\FeedbackJpaController.java
 C:\Users\User\Documents\NetBeansProjects\ClimaOrganizacional\src\main\java\br\prat\jpaController\UsuarioJpaController.java
 C:\Users\User\Documents\NetBeansProjects\ClimaOrganizacional\src\main\java\br\prat\climaorganizacional\ClimaOrganizacional.java
+C:\Users\User\Documents\NetBeansProjects\ClimaOrganizacional\src\main\java\br\prat\GUI\AdminManage\criarUsuario.java
 C:\Users\User\Documents\NetBeansProjects\ClimaOrganizacional\src\main\java\br\prat\controller\controller.java
 C:\Users\User\Documents\NetBeansProjects\ClimaOrganizacional\src\main\java\br\prat\GUI\AdminManage\gerenciaUsuarios.java
 C:\Users\User\Documents\NetBeansProjects\ClimaOrganizacional\src\main\java\br\prat\GUI\AdminManage\dashboardFeedbacks.java
