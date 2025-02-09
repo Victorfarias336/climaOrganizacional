@@ -7,6 +7,8 @@ public class dialogSalvar extends javax.swing.JFrame {
 
     controller control;
     telaLogin inicio;
+    private String setor;
+    private String cargo;
     private int perg1;
     private int perg2;
     private int perg3;
@@ -15,9 +17,11 @@ public class dialogSalvar extends javax.swing.JFrame {
     Usuario usr;
     telaFeedback fechar;
 
-    public dialogSalvar(int perg1, int perg2, int perg3, int perg4, 
-            String aMelhorar, Usuario usr, telaFeedback fechar) {
+    public dialogSalvar(String setor, String cargo, int perg1, int perg2, 
+            int perg3, int perg4, String aMelhorar, Usuario usr, telaFeedback fechar) {
         initComponents();
+        this.setor = setor;
+        this.cargo = cargo;
         this.perg1 = perg1;
         this.perg2 = perg2;
         this.perg3 = perg3;
@@ -98,7 +102,7 @@ public class dialogSalvar extends javax.swing.JFrame {
         inicio = new telaLogin();
         String usua = usr.getNome();
         
-        control.criarFeedback(usua, perg1, perg2, perg3, perg4, aMelhorar);
+        control.criarFeedback(usua, setor, cargo, perg1, perg2, perg3, perg4, aMelhorar);
         inicio.setVisible(true);
         inicio.setLocationRelativeTo(null);
         fechar.dispose();

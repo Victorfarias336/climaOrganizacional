@@ -59,6 +59,10 @@ public class telaFeedback extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         p2Btn3 = new javax.swing.JRadioButton();
         p2Btn4 = new javax.swing.JRadioButton();
+        jLabel7 = new javax.swing.JLabel();
+        boxSetor = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        boxCargo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -160,6 +164,10 @@ public class telaFeedback extends javax.swing.JFrame {
         pergunta2.add(p2Btn4);
         p2Btn4.setText("4");
 
+        jLabel7.setText("Setor");
+
+        jLabel8.setText("Cargo");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -213,7 +221,11 @@ public class telaFeedback extends javax.swing.JFrame {
                                         .addComponent(p2Btn5)
                                         .addComponent(p1Btn5)
                                         .addComponent(p3Btn5)
-                                        .addComponent(p4Btn5)))))
+                                        .addComponent(p4Btn5)))
+                                .addComponent(jLabel7)
+                                .addComponent(boxSetor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel8)
+                                .addComponent(boxCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                             .addGap(410, 410, 410)
                             .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -234,7 +246,15 @@ public class telaFeedback extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(lblNome)
                     .addComponent(btnLogout))
-                .addGap(23, 23, 23)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(boxSetor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel8)
+                .addGap(10, 10, 10)
+                .addComponent(boxCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -312,6 +332,8 @@ public class telaFeedback extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> boxCargo;
+    private javax.swing.JComboBox<String> boxSetor;
     private javax.swing.JButton btnConfirmar;
     private javax.swing.JButton btnLogout;
     private javax.swing.JLabel jLabel1;
@@ -320,6 +342,8 @@ public class telaFeedback extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblNome;
@@ -395,13 +419,16 @@ public class telaFeedback extends javax.swing.JFrame {
         if ("6".equals(ask1) || "6".equals(ask2) || "6".equals(ask3) || "6".equals(ask4)) {
             JOptionPane.showMessageDialog(null, "preencha todos os campos");
         } else {
+            String setor = (String) boxSetor.getSelectedItem();
+            String cargo = (String) boxCargo.getSelectedItem();
             int perg1 = Integer.parseInt(ask1);
             int perg2 = Integer.parseInt(ask2);
             int perg3 = Integer.parseInt(ask3);
             int perg4 = Integer.parseInt(ask4);
             String aMelhorar = txtOpcional.getText();
             
-            dialogSalvar dialog = new dialogSalvar(perg1, perg2, perg3, perg4, aMelhorar, usr, this);
+            dialogSalvar dialog = new dialogSalvar(setor, cargo, perg1, perg2, 
+                    perg3, perg4, aMelhorar, usr, this);
             
             dialog.setVisible(true);
             dialog.setLocationRelativeTo(null);

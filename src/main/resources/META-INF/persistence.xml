@@ -5,12 +5,15 @@
     <class>br.prat.entitys.Usuario</class>
     <class>br.prat.entitys.tipoUsuario</class>
     <class>br.prat.entitys.Feedback</class>
+    <class>br.prat.entitys.Cargo</class>
+    <class>br.prat.entitys.Setor</class>
     <properties>
       <property name="jakarta.persistence.jdbc.url" value="jdbc:derby://localhost:1527/feedback"/>
       <property name="jakarta.persistence.jdbc.user" value="adm"/>
       <property name="jakarta.persistence.jdbc.driver" value="org.apache.derby.client.ClientAutoloadedDriver"/>
       <property name="jakarta.persistence.jdbc.password" value="123"/>
       <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+      <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
     </properties>
   </persistence-unit>
 </persistence>

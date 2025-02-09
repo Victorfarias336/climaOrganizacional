@@ -56,9 +56,12 @@ public class controller {
         controlPersis.cadastrar(user);
     }
 
-    public void criarFeedback(String usua, int perg1, int perg2, int perg3, int perg4, String aMelhorar) {
+    public void criarFeedback(String usua, String setor, String cargo, 
+            int perg1, int perg2, int perg3, int perg4, String aMelhorar) {
         Feedback fdbck = new Feedback();
         fdbck.setUsuario(usua);
+        fdbck.setSetor(setor);
+        fdbck.setCargo(cargo);
         fdbck.setPerg1(perg1);
         fdbck.setPerg2(perg2);
         fdbck.setPerg3(perg3);

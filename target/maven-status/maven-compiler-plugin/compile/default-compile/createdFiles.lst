@@ -7,6 +7,7 @@ br\prat\jpaController\tipoUsuarioJpaController.class
 br\prat\GUI\AdminManage\gerenciaUsuarios$4.class
 br\prat\GUI\telaLogin$2.class
 br\prat\persistence\controllerPersistence.class
+br\prat\jpaController\CargoJpaController.class
 br\prat\GUI\AdminManage\tableFeedback$4.class
 br\prat\GUI\telaFeedback$1.class
 br\prat\GUI\telaCadastro$2.class
@@ -24,6 +25,7 @@ br\prat\GUI\telaCadastro$1.class
 br\prat\GUI\telaFeedback$3.class
 br\prat\jpaController\exceptions\NonexistentEntityException.class
 br\prat\GUI\telaAdmin.class
+br\prat\entitys\Setor.class
 br\prat\entitys\Usuario.class
 br\prat\GUI\AdminManage\tableFeedback.class
 br\prat\GUI\AdminManage\criarUsuario$1.class
@@ -40,10 +42,12 @@ br\prat\GUI\AdminManage\gerenciaUsuarios$6.class
 br\prat\GUI\telaFeedback.class
 br\prat\jpaController\exceptions\PreexistingEntityException.class
 br\prat\controller\controller.class
+br\prat\entitys\Cargo.class
 br\prat\GUI\telaFeedback$2.class
 br\prat\jpaController\UsuarioJpaController.class
 br\prat\GUI\AdminManage\dashboardFeedbacks.class
 br\prat\GUI\AdminManage\tableFeedback$3.class
+br\prat\jpaController\SetorJpaController.class
 br\prat\GUI\telaAdmin$4.class
 br\prat\GUI\AdminManage\editarUsuario$3.class
 br\prat\GUI\AdminManage\gerenciaUsuarios$2.class
