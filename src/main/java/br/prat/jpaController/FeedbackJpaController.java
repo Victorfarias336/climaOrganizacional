@@ -16,7 +16,10 @@ import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import java.util.List;
 
-
+/**
+ *
+ * @author User
+ */
 public class FeedbackJpaController implements Serializable {
 
     public FeedbackJpaController(EntityManagerFactory emf) {
@@ -30,6 +33,7 @@ public class FeedbackJpaController implements Serializable {
     public FeedbackJpaController(){
         emf = Persistence.createEntityManagerFactory("FeedbackPU");
     }
+
     public void create(Feedback feedback) {
         EntityManager em = null;
         try {

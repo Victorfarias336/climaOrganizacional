@@ -20,11 +20,13 @@ public class Feedback implements Serializable {
     private int perg3;
     private int perg4;
     private Date data;
+    private String setor;
+    private String cargo;
 
     public Feedback() {
     }
 
-    public Feedback(int id, String usuario, String aMelhorar, int perg1, int perg2, int perg3, int perg4, Date data) {
+    public Feedback(int id, String usuario, String aMelhorar, int perg1, int perg2, int perg3, int perg4, Date data, String setor, String cargo) {
         this.id = id;
         this.usuario = usuario;
         this.aMelhorar = aMelhorar;
@@ -33,6 +35,8 @@ public class Feedback implements Serializable {
         this.perg3 = perg3;
         this.perg4 = perg4;
         this.data = data;
+        this.setor = setor;
+        this.cargo = cargo;
     }
 
     public int getId() {
@@ -99,4 +103,20 @@ public class Feedback implements Serializable {
         this.data = data;
     }
 
+    public String getSetor() {
+        return setor;
+    }
+
+    public void setSetor(String setor) {
+        this.setor = setor;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+    
 }

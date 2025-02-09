@@ -1,7 +1,11 @@
 package br.prat.GUI.AdminManage;
 
 import br.prat.controller.controller;
+import br.prat.entitys.Feedback;
 import br.prat.entitys.Usuario;
+import java.util.List;
+import org.jfree.data.xy.XYDataset;
+import org.jfree.data.xy.XYSeries;
 
 public class dashboardFeedbacks extends javax.swing.JFrame {
 
@@ -13,7 +17,7 @@ public class dashboardFeedbacks extends javax.swing.JFrame {
         this.control = control;
         this.usr = usr;
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,17 +33,18 @@ public class dashboardFeedbacks extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 1193, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 591, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
