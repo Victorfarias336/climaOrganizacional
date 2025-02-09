@@ -1,9 +1,13 @@
 package br.prat.persistence;
 
+import br.prat.entitys.Cargo;
 import br.prat.entitys.Feedback;
+import br.prat.entitys.Setor;
 import br.prat.entitys.Usuario;
 import br.prat.entitys.tipoUsuario;
+import br.prat.jpaController.CargoJpaController;
 import br.prat.jpaController.FeedbackJpaController;
+import br.prat.jpaController.SetorJpaController;
 import br.prat.jpaController.UsuarioJpaController;
 import br.prat.jpaController.exceptions.NonexistentEntityException;
 import br.prat.jpaController.tipoUsuarioJpaController;
@@ -16,6 +20,8 @@ public class controllerPersistence {
     UsuarioJpaController usuJpa = new UsuarioJpaController();
     tipoUsuarioJpaController tipoJpa = new tipoUsuarioJpaController();
     FeedbackJpaController feedJpa = new FeedbackJpaController();
+    SetorJpaController setorJpa = new SetorJpaController();
+    CargoJpaController cargoJpa = new CargoJpaController();
 
     public List<Usuario> buscaUsuarios() {
         List<Usuario> listaUsuario = usuJpa.findUsuarioEntities();
@@ -57,6 +63,14 @@ public class controllerPersistence {
         } catch (NonexistentEntityException ex) {
             Logger.getLogger(controllerPersistence.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public List<Setor> trazerSetores() {
+        return setorJpa.findSetorEntities();
+    }
+
+    public List<Cargo> trazerCargos() {
+        return cargoJpa.findCargoEntities();
     }
 
 }

@@ -137,7 +137,7 @@ public class telaLogin extends javax.swing.JFrame {
                 this.dispose();
             }
             if(tipo.equals("user")){
-                telaFeedback tFeed = new telaFeedback(usr);
+                telaFeedback tFeed = new telaFeedback(control, usr);
                 tFeed.setVisible(true);
                 tFeed.setLocationRelativeTo(null);
                 this.dispose();

@@ -1,16 +1,22 @@
 package br.prat.GUI;
 
+import br.prat.controller.controller;
+import br.prat.entitys.Cargo;
+import br.prat.entitys.Setor;
 import br.prat.entitys.Usuario;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class telaFeedback extends javax.swing.JFrame {
 
+    controller control;
     Usuario usr;
     telaLogin inicio;        
 
-    public telaFeedback(Usuario usr) {
+    public telaFeedback(controller control, Usuario usr) {
         initComponents();
         this.usr = usr;
+        this.control = control;
         
     }
 
@@ -320,6 +326,19 @@ public class telaFeedback extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.lblNome.setText(usr.getNome());
+        
+        List<Setor> listaSetor = control.trazerSetores();
+        if(listaSetor != null){
+            for(Setor setor : listaSetor){
+                boxSetor.addItem(setor.getSetor());
+            }
+        }
+        List<Cargo> listaCargo = control.trazerCargos();
+        if(listaCargo != null){
+            for(Cargo cargo : listaCargo){
+                boxCargo.addItem(cargo.getCargo());
+            }
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed

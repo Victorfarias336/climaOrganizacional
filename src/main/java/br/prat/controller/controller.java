@@ -1,6 +1,8 @@
 package br.prat.controller;
 
+import br.prat.entitys.Cargo;
 import br.prat.entitys.Feedback;
+import br.prat.entitys.Setor;
 import br.prat.entitys.Usuario;
 import br.prat.entitys.tipoUsuario;
 import br.prat.persistence.controllerPersistence;
@@ -124,5 +126,13 @@ public class controller {
 
     public void excluirUser(int id_usr) {
         controlPersis.excluirUser(id_usr);
+    }
+
+    public List<Setor> trazerSetores() {
+        return controlPersis.trazerSetores();
+    }
+
+    public List<Cargo> trazerCargos() {
+        return controlPersis.trazerCargos();
     }
 }
