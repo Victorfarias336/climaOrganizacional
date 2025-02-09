@@ -51,6 +51,7 @@ public class tableFeedback extends javax.swing.JFrame {
 
             }
         ));
+        jtableFeedbcks.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jScrollPane1.setViewportView(jtableFeedbcks);
 
         btnRecarrega.setText("Recarregar");
@@ -152,7 +153,7 @@ public class tableFeedback extends javax.swing.JFrame {
             }
         };
 
-        String titulos[] = {"usuario", "data", "empresa", "setor", "liderança", "função",
+        String titulos[] = {"usuario", "setor", "cargo", "data", "empresa", "setor", "liderança", "função",
             "a melhorar"};
         tabelFeed.setColumnIdentifiers(titulos);
 
@@ -160,11 +161,13 @@ public class tableFeedback extends javax.swing.JFrame {
 
         if (listaFeed != null) {
             for (Feedback feed : listaFeed) {
-                Object[] objeto = {feed.getUsuario(), feed.getData(), feed.getPerg1(),
-                    feed.getPerg2(), feed.getPerg3(), feed.getPerg4(), feed.getaMelhorar()};
+                Object[] objeto = {feed.getUsuario(), feed.getSetor(), feed.getCargo(), 
+                    feed.getData(), feed.getPerg1(), feed.getPerg2(), feed.getPerg3(), 
+                    feed.getPerg4(), feed.getaMelhorar()};
                 tabelFeed.addRow(objeto);
             }
             jtableFeedbcks.setModel(tabelFeed);
         }
+        
     }
 }
