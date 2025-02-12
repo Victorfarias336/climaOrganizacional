@@ -11,6 +11,7 @@ br\prat\jpaController\CargoJpaController.class
 br\prat\GUI\AdminManage\tableFeedback$4.class
 br\prat\GUI\telaFeedback$1.class
 br\prat\GUI\telaCadastro$2.class
+br\prat\GUI\AdminManage\dashboardFeedbacks$1.class
 br\prat\GUI\AdminManage\criarUsuario.class
 br\prat\GUI\telaAdmin$5.class
 br\prat\GUI\AdminManage\criarUsuario$2.class

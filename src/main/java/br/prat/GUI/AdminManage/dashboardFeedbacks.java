@@ -3,21 +3,37 @@ package br.prat.GUI.AdminManage;
 import br.prat.controller.controller;
 import br.prat.entitys.Feedback;
 import br.prat.entitys.Usuario;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
-import org.jfree.data.xy.XYDataset;
+import java.util.Map;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.axis.NumberTickUnit;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 
 public class dashboardFeedbacks extends javax.swing.JFrame {
 
     controller control;
     Usuario usr;
+    //Feedback feed;
 
     public dashboardFeedbacks(controller control, Usuario usr) {
         initComponents();
         this.control = control;
         this.usr = usr;
+        //feed = new Feedback();
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,24 +43,112 @@ public class dashboardFeedbacks extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jPaneLineChart = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+
+        jPaneLineChart.setLayout(new java.awt.BorderLayout());
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(jPaneLineChart, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(718, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jPaneLineChart, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(269, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1193, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 591, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        lineChart();
+    }//GEN-LAST:event_formWindowOpened
+
+    public void lineChart() {
+
+        XYSeries series = new XYSeries("satifação dos funcionarios com a empresa");
+
+        List<Feedback> listFeed = control.trazerFeedbcks();
+
+        // Usar HashMap para agrupar os valores de perg1 por mês
+        Map<Integer, List<Integer>> dadosPorMes = new HashMap<>();
+
+        for (Feedback feed : listFeed) {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(feed.getData());
+            int mes = cal.get(Calendar.MONTH) + 1; // Mês (1-12)
+            int perg1 = feed.getPerg1();
+
+            // Adiciona o valor de perg1 à lista do mês correspondente
+            dadosPorMes.computeIfAbsent(mes, k -> new ArrayList<>()).add(perg1);
+        }
+
+        // Calcular a média para cada mês
+        for (Map.Entry<Integer, List<Integer>> entry : dadosPorMes.entrySet()) {
+            int mes = entry.getKey();
+            List<Integer> valoresPerg1 = entry.getValue();
+
+            double media = 0;
+            if (!valoresPerg1.isEmpty()) {
+                for (int valor : valoresPerg1) {
+                    media += valor;
+                }
+                media /= valoresPerg1.size();
+            }
+            series.add(mes, media); // Adiciona o mês e a média ao gráfico
+        }
+
+        XYSeriesCollection dataset = new XYSeriesCollection(series);
+
+        JFreeChart lChart = ChartFactory.createXYLineChart("Grafico de linha",
+                "mês", "media por mês", dataset, PlotOrientation.VERTICAL, true, true, false);
+
+        XYPlot linePlot = lChart.getXYPlot();
+        linePlot.setBackgroundPaint(Color.white);
+
+        XYLineAndShapeRenderer lineRende = (XYLineAndShapeRenderer) linePlot.getRenderer();
+        lineRende.setSeriesPaint(0, Color.RED);
+        
+        NumberAxis domainAxis = new NumberAxis("mês");
+        //domainAxis.setRange(1, 12);//intervalo do eixo X em meses
+        domainAxis.setTickUnit(new NumberTickUnit(1));//incrementa de 1 em 1
+        linePlot.setDomainAxis(domainAxis);
+
+        ChartPanel lchart = new ChartPanel(lChart);
+        jPaneLineChart.removeAll();
+        jPaneLineChart.add(lchart, BorderLayout.CENTER);
+        jPaneLineChart.validate();
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPaneLineChart;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
 }
