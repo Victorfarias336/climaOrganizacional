@@ -9,56 +9,45 @@ import br.prat.persistence.controllerPersistence;
 import java.util.Date;
 import java.util.List;
 
-
 public class controller {
+
     controllerPersistence controlPersis;
     private final Usuario user = new Usuario();
     private tipoUsuario tipUsr = new tipoUsuario();
-    
+
     public controller() {
         controlPersis = new controllerPersistence();
     }
-    
+
     public Usuario validarUsuario(String nome, String senha) {
         //String mensagem = "";
         Usuario usr = null;
         List<Usuario> listaUsuario = controlPersis.buscaUsuarios();
-        for(Usuario usu : listaUsuario){
-            if(usu.getNome().equals(nome)){
-                if(usu.getSenha().equals(senha)){
-                    /*mensagem = "usuario encontrado";
-                    return mensagem;*/
-                    usr = usu;
-                    return usr;
-                }
-                else{
-                    //mensagem = "senha ou nome incorreto";
-                    //return mensagem;
-                    usr = null;
-                    return usr;
-                }
-            }
-            else{
+        for (Usuario usu : listaUsuario) {
+            if (usu.getNome().equals(nome) && usu.getSenha().equals(senha)) {
+                usr = usu;
+                return usr;
+            } else {
                 //mensagem = "usuario não encontrado";
                 usr = null;
             }
         }
         return usr;
-    }   
+    }
 
     public void cadastroUser(String nomeCad, String senhaCad) {
-        
+
         tipUsr.setId(2);
         tipUsr.setDescrição("para usuario user");
         tipUsr.setTipo("user");
-        
+
         user.setNome(nomeCad);
         user.setSenha(senhaCad);
         user.setUmtipo(tipUsr);
         controlPersis.cadastrar(user);
     }
 
-    public void criarFeedback(String usua, String setor, String cargo, 
+    public void criarFeedback(String usua, String setor, String cargo,
             int perg1, int perg2, int perg3, int perg4, String aMelhorar) {
         Feedback fdbck = new Feedback();
         fdbck.setUsuario(usua);
@@ -70,7 +59,7 @@ public class controller {
         fdbck.setPerg4(perg4);
         fdbck.setData(new Date(System.currentTimeMillis()));
         fdbck.setaMelhorar(aMelhorar);
-        
+
         controlPersis.criarFeedback(fdbck);
     }
 
@@ -89,9 +78,9 @@ public class controller {
     public void criarUser(String nome, String senha, String tipo) {
         user.setNome(nome);
         user.setSenha(senha);
-        
+
         tipUsr = this.trazerTipo(tipo);
-        if(tipUsr != null){
+        if (tipUsr != null) {
             user.setUmtipo(tipUsr);
         }
         controlPersis.cadastrar(user);
@@ -100,8 +89,8 @@ public class controller {
     private tipoUsuario trazerTipo(String tipo) {
         List<tipoUsuario> listTip = controlPersis.buscaTipo();
         //compara string tipo com os tipos da tabela e retorna o que for igual
-        for(tipoUsuario tip : listTip){
-            if(tip.getTipo().equals(tipo)){
+        for (tipoUsuario tip : listTip) {
+            if (tip.getTipo().equals(tipo)) {
                 return tip;
             }
         }
@@ -115,12 +104,12 @@ public class controller {
     public void editaUser(Usuario usu, String nome, String senha, String tipo) {
         usu.setNome(nome);
         usu.setSenha(senha);
-        
+
         tipUsr = this.trazerTipo(tipo);
-        if(tipUsr != null){
+        if (tipUsr != null) {
             usu.setUmtipo(tipUsr);
         }
-        
+
         controlPersis.editaUser(usu);
     }
 

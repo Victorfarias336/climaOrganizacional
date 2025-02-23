@@ -70,7 +70,7 @@ public class telaFeedback extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         boxCargo = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -345,8 +345,8 @@ public class telaFeedback extends javax.swing.JFrame {
         inicio = new telaLogin();
         inicio.setVisible(true);
         inicio.setLocationRelativeTo(null);
-        
-        
+        this.dispose();
+          
     }//GEN-LAST:event_btnLogoutActionPerformed
 
 
