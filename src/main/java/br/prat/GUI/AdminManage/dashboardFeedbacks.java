@@ -18,6 +18,8 @@ import org.jfree.chart.axis.NumberTickUnit;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
@@ -45,6 +47,9 @@ public class dashboardFeedbacks extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPaneLineChart = new javax.swing.JPanel();
+        jPaneBarChart = new javax.swing.JPanel();
+        jPaneDonutChart = new javax.swing.JPanel();
+        jPaneBarVChart = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -55,21 +60,41 @@ public class dashboardFeedbacks extends javax.swing.JFrame {
 
         jPaneLineChart.setLayout(new java.awt.BorderLayout());
 
+        jPaneBarChart.setLayout(new java.awt.BorderLayout());
+
+        jPaneDonutChart.setLayout(new java.awt.BorderLayout());
+
+        jPaneBarVChart.setLayout(new java.awt.BorderLayout());
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jPaneLineChart, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(718, Short.MAX_VALUE))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPaneBarChart, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                        .addComponent(jPaneBarVChart, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPaneLineChart, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPaneDonutChart, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(226, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jPaneLineChart, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(269, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPaneLineChart, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+                    .addComponent(jPaneDonutChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPaneBarVChart, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPaneBarChart, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -88,6 +113,7 @@ public class dashboardFeedbacks extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         lineChart();
+        honBarChart();
     }//GEN-LAST:event_formWindowOpened
 
     public void lineChart() {
@@ -134,7 +160,7 @@ public class dashboardFeedbacks extends javax.swing.JFrame {
 
         XYLineAndShapeRenderer lineRende = (XYLineAndShapeRenderer) linePlot.getRenderer();
         lineRende.setSeriesPaint(0, Color.RED);
-        
+
         NumberAxis domainAxis = new NumberAxis("mês");
         //domainAxis.setRange(1, 12);//intervalo do eixo X em meses
         domainAxis.setTickUnit(new NumberTickUnit(1));//incrementa de 1 em 1
@@ -146,7 +172,49 @@ public class dashboardFeedbacks extends javax.swing.JFrame {
         jPaneLineChart.validate();
     }
 
+    public void honBarChart() {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+        List<Feedback> listFeed = control.trazerFeedbcks();
+
+        // Agrupar as notas por setor
+        Map<String, List<Integer>> notasPorSetor = new HashMap<>();
+        for (Feedback feedback : listFeed) {
+            String setor = feedback.getSetor();
+            int nota = feedback.getPerg2();
+            notasPorSetor.computeIfAbsent(setor, k -> new ArrayList<>()).add(nota);
+        }
+
+        // Calcular a média das notas para cada setor
+        for (Map.Entry<String, List<Integer>> entry : notasPorSetor.entrySet()) {
+            String setor = entry.getKey();
+            List<Integer> notas = entry.getValue();
+            double media = notas.stream().mapToInt(Integer::intValue).average().orElse(0); // Calcula a média
+            dataset.addValue(media, setor, setor); // Adiciona ao dataset.  O terceiro argumento é redundante aqui, mas pode ser útil para legendas mais complexas.
+        }
+
+        JFreeChart hBarchart = ChartFactory.createBarChart(
+                "barras hon", //titulo
+                "categorias", //eixo x
+                "valores", //eixo y
+                dataset, //dados
+                PlotOrientation.HORIZONTAL,
+                true, //legenda
+                true, //tooltips
+                false //url
+        );
+
+        ChartPanel hbarchart = new ChartPanel(hBarchart);
+        jPaneBarChart.removeAll();
+        jPaneBarChart.add(hbarchart, BorderLayout.CENTER);
+        jPaneBarChart.validate();
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPaneBarChart;
+    private javax.swing.JPanel jPaneBarVChart;
+    private javax.swing.JPanel jPaneDonutChart;
     private javax.swing.JPanel jPaneLineChart;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
