@@ -5,6 +5,7 @@ import br.prat.entitys.Feedback;
 import br.prat.entitys.Usuario;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -15,7 +16,6 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.axis.NumberTickUnit;
-import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.RingPlot;
 import org.jfree.chart.plot.XYPlot;
@@ -29,13 +29,13 @@ public class dashboardFeedbacks extends javax.swing.JFrame {
 
     controller control;
     Usuario usr;
-    //Feedback feed;
+    
 
     public dashboardFeedbacks(controller control, Usuario usr) {
         initComponents();
         this.control = control;
         this.usr = usr;
-        //feed = new Feedback();
+    
     }
 
     /**
@@ -90,8 +90,8 @@ public class dashboardFeedbacks extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPaneLineChart, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
-                    .addComponent(jPaneDonutChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPaneLineChart, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPaneDonutChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPaneBarVChart, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -117,6 +117,7 @@ public class dashboardFeedbacks extends javax.swing.JFrame {
         lineChart();
         honBarChart();
         donutChart();
+        verBarChart();
     }//GEN-LAST:event_formWindowOpened
 
     public void lineChart() {
@@ -170,9 +171,16 @@ public class dashboardFeedbacks extends javax.swing.JFrame {
         linePlot.setDomainAxis(domainAxis);
 
         ChartPanel lchart = new ChartPanel(lChart);
+        
+        int preferredWidth = 424;
+        int preferredHeight = 258;
+        lchart.setPreferredSize(new Dimension(preferredWidth, preferredHeight));
+        lchart.setMaximumSize(new Dimension(preferredWidth, preferredHeight));
+        
         jPaneLineChart.removeAll();
         jPaneLineChart.add(lchart, BorderLayout.CENTER);
         jPaneLineChart.validate();
+        jPaneLineChart.repaint();
     }
 
     public void honBarChart() {
@@ -208,9 +216,16 @@ public class dashboardFeedbacks extends javax.swing.JFrame {
         );
 
         ChartPanel hbarchart = new ChartPanel(hBarchart);
+        
+        int preferredWidth = 424;
+        int preferredHeight = 219;
+        hbarchart.setPreferredSize(new Dimension(preferredWidth, preferredHeight));
+        hbarchart.setMaximumSize(new Dimension(preferredWidth, preferredHeight));
+        
         jPaneBarChart.removeAll();
         jPaneBarChart.add(hbarchart, BorderLayout.CENTER);
         jPaneBarChart.validate();
+        jPaneBarChart.repaint();
     }
 
     public void donutChart() {
@@ -239,9 +254,66 @@ public class dashboardFeedbacks extends javax.swing.JFrame {
         donPlot.setSectionDepth(0.4); // tamanho do furo
 
         ChartPanel donChart = new ChartPanel(DonChart);
+        
+        int preferredWidth = 424;
+        int preferredHeight = 258;
+        donChart.setPreferredSize(new Dimension(preferredWidth, preferredHeight));
+        donChart.setMaximumSize(new Dimension(preferredWidth, preferredHeight));
+        
         jPaneDonutChart.removeAll();
         jPaneDonutChart.add(donChart, BorderLayout.CENTER);
         jPaneDonutChart.validate();
+        jPaneDonutChart.repaint();
+    }
+
+    public void verBarChart() {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        List<Feedback> listFeed = control.trazerFeedbcks();
+
+        // Passo 1: Agrupar os dados
+        Map<String, List<Integer>> cargoPerg4Map = new HashMap<>();
+        for (Feedback feedback : listFeed) {
+            String cargo = feedback.getCargo();
+            int perg4 = feedback.getPerg4();
+            cargoPerg4Map.putIfAbsent(cargo, new ArrayList<>());
+            cargoPerg4Map.get(cargo).add(perg4);
+        }
+
+        Map<String, Double> cargoMediaPerg4 = new HashMap<>();
+        for (Map.Entry<String, List<Integer>> entry : cargoPerg4Map.entrySet()) {
+            String cargo = entry.getKey();
+            List<Integer> perg4List = entry.getValue();
+            double mediaPerg4 = perg4List.stream().mapToInt(Integer::intValue).average().orElse(0.0);
+            cargoMediaPerg4.put(cargo, mediaPerg4);
+        }
+
+        // Passo 2: Preparar os dados para o gráfico
+        for (Map.Entry<String, Double> entry : cargoMediaPerg4.entrySet()) {
+            dataset.addValue(entry.getValue(), "Média de Perg4", entry.getKey());
+        }
+
+        JFreeChart hBarVchart = ChartFactory.createBarChart(
+                "barras vertical", //titulo
+                "categorias", //eixo x
+                "valores", //eixo y
+                dataset, //dados
+                PlotOrientation.VERTICAL,
+                true, //legenda
+                true, //tooltips
+                false //url
+        );
+
+        ChartPanel hbarVchart = new ChartPanel(hBarVchart);
+        
+        int preferredWidth = 424;
+        int preferredHeight = 258;
+        hbarVchart.setPreferredSize(new Dimension(preferredWidth, preferredHeight));
+        hbarVchart.setMaximumSize(new Dimension(preferredWidth, preferredHeight));
+        
+        jPaneBarVChart.removeAll();
+        jPaneBarVChart.add(hbarVchart, BorderLayout.CENTER);
+        jPaneBarVChart.validate();
+        jPaneBarVChart.repaint();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
