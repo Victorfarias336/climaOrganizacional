@@ -15,7 +15,9 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.axis.NumberTickUnit;
+import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.RingPlot;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
@@ -75,18 +77,18 @@ public class dashboardFeedbacks extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPaneBarChart, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                        .addGap(96, 96, 96)
                         .addComponent(jPaneBarVChart, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPaneLineChart, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(96, 96, 96)
                         .addComponent(jPaneDonutChart, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(226, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPaneLineChart, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
                     .addComponent(jPaneDonutChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -114,6 +116,7 @@ public class dashboardFeedbacks extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         lineChart();
         honBarChart();
+        donutChart();
     }//GEN-LAST:event_formWindowOpened
 
     public void lineChart() {
@@ -209,8 +212,38 @@ public class dashboardFeedbacks extends javax.swing.JFrame {
         jPaneBarChart.add(hbarchart, BorderLayout.CENTER);
         jPaneBarChart.validate();
     }
-    
-    
+
+    public void donutChart() {
+        DefaultPieDataset donDataset = new DefaultPieDataset();
+
+        // Passo 1: Coletar os dados
+        List<Feedback> listFeed = control.trazerFeedbcks();
+        Map<String, Integer> setorCount = new HashMap<>();
+
+        for (Feedback feedback : listFeed) {
+            String setor = feedback.getSetor();
+            setorCount.put(setor, setorCount.getOrDefault(setor, 0) + 1);
+        }
+
+        // Passo 2: Preparar os dados para o gráfico
+        for (Map.Entry<String, Integer> entry : setorCount.entrySet()) {
+            donDataset.setValue(entry.getKey(), entry.getValue());
+        }
+
+        JFreeChart DonChart = ChartFactory.createRingChart("grafico de donut",
+                donDataset, true, true, false);
+        RingPlot donPlot = (RingPlot) DonChart.getPlot();
+        donPlot.setCircular(true);
+        donPlot.setBackgroundAlpha(0.0f); //fundo transparente
+        donPlot.setOutlineVisible(false); //remove contorno
+        donPlot.setSectionDepth(0.4); // tamanho do furo
+
+        ChartPanel donChart = new ChartPanel(DonChart);
+        jPaneDonutChart.removeAll();
+        jPaneDonutChart.add(donChart, BorderLayout.CENTER);
+        jPaneDonutChart.validate();
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPaneBarChart;
     private javax.swing.JPanel jPaneBarVChart;
