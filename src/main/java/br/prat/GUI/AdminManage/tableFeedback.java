@@ -1,6 +1,7 @@
 package br.prat.GUI.AdminManage;
 
 import br.prat.GUI.telaAdmin;
+import br.prat.GUI.telaFeedback;
 import br.prat.controller.controller;
 import br.prat.entitys.Feedback;
 import br.prat.entitys.Usuario;
@@ -11,11 +12,13 @@ public class tableFeedback extends javax.swing.JFrame {
 
     Usuario usr;
     controller control;
+    telaFeedback telaFeed;
 
     public tableFeedback(controller control, Usuario usr) {
         initComponents();
         this.control = control;
         this.usr = usr;
+        telaFeed = new telaFeedback(control, usr);
     }
 
     /**
@@ -33,6 +36,7 @@ public class tableFeedback extends javax.swing.JFrame {
         jtableFeedbcks = new javax.swing.JTable();
         btnRecarrega = new javax.swing.JButton();
         btnVolta = new javax.swing.JButton();
+        btnCriarFeedAdm = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -68,6 +72,13 @@ public class tableFeedback extends javax.swing.JFrame {
             }
         });
 
+        btnCriarFeedAdm.setText("Fazer um feedback");
+        btnCriarFeedAdm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCriarFeedAdmActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -78,7 +89,8 @@ public class tableFeedback extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnRecarrega, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnVolta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnVolta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCriarFeedAdm, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(25, 25, 25))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(281, 281, 281)
@@ -90,9 +102,11 @@ public class tableFeedback extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
+                        .addGap(66, 66, 66)
+                        .addComponent(btnCriarFeedAdm, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(btnRecarrega, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
+                        .addGap(18, 18, 18)
                         .addComponent(btnVolta, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
@@ -132,8 +146,15 @@ public class tableFeedback extends javax.swing.JFrame {
         carregarTabela();
     }//GEN-LAST:event_btnRecarregaActionPerformed
 
+    private void btnCriarFeedAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarFeedAdmActionPerformed
+        telaFeed.setVisible(true);
+        telaFeed.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnCriarFeedAdmActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCriarFeedAdm;
     private javax.swing.JButton btnRecarrega;
     private javax.swing.JButton btnVolta;
     private javax.swing.JLabel jLabel1;

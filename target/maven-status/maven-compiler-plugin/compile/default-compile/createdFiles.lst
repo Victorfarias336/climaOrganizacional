@@ -37,6 +37,7 @@ br\prat\GUI\telaAdmin$3.class
 br\prat\GUI\AdminManage\editarUsuario$2.class
 br\prat\GUI\telaCadastro.class
 br\prat\entitys\Feedback.class
+br\prat\GUI\AdminManage\tableFeedback$5.class
 br\prat\GUI\dialogSalvar.class
 br\prat\GUI\AdminManage\tableFeedback$2.class
 br\prat\GUI\AdminManage\gerenciaUsuarios$6.class
