@@ -43,6 +43,7 @@ br\prat\GUI\AdminManage\gerenciaUsuarios$6.class
 br\prat\GUI\telaFeedback.class
 br\prat\jpaController\exceptions\PreexistingEntityException.class
 br\prat\controller\controller.class
+br\prat\GUI\AdminManage\dashboardFeedbacks$2.class
 br\prat\entitys\Cargo.class
 br\prat\GUI\telaFeedback$2.class
 br\prat\jpaController\UsuarioJpaController.class

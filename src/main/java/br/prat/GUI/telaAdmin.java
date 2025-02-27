@@ -146,7 +146,7 @@ Usuario usr;
     }//GEN-LAST:event_btnTableFeedbckActionPerformed
 
     private void btnDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashboardActionPerformed
-        dashboardFeedbacks dash = new dashboardFeedbacks(control, usr);
+        dashboardFeedbacks dash = new dashboardFeedbacks(control, this);
         
         dash.setVisible(true);
         dash.setLocationRelativeTo(null);
