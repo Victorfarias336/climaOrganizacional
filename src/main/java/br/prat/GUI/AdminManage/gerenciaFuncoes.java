@@ -1,18 +1,25 @@
 package br.prat.GUI.AdminManage;
 
+import br.prat.GUI.AdminManage.Funções.criaSetor;
+import br.prat.GUI.AdminManage.Funções.editaSetor;
+import br.prat.GUI.telaAdmin;
 import br.prat.controller.controller;
 import br.prat.entitys.Cargo;
 import br.prat.entitys.Setor;
 import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class gerenciaFuncoes extends javax.swing.JFrame {
 
     controller control;
+    private telaAdmin telad;
 
-    public gerenciaFuncoes(controller control) {
+    public gerenciaFuncoes(controller control, telaAdmin telad) {
         initComponents();
         this.control = control;
+        this.telad = telad; 
     }
 
     /**
@@ -27,17 +34,18 @@ public class gerenciaFuncoes extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSetor = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblCargo = new javax.swing.JTable();
-        jButton7 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        btnEditCargo = new javax.swing.JButton();
+        btnVolta = new javax.swing.JButton();
+        btnApagaSetor = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnApagaCargo = new javax.swing.JButton();
+        btnCriaSetor = new javax.swing.JButton();
+        btnCriaCargo = new javax.swing.JButton();
+        btnEditSetor = new javax.swing.JButton();
+        btnRecarrega = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -59,10 +67,6 @@ public class gerenciaFuncoes extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblSetor);
 
-        jLabel2.setText("Cargos");
-
-        jButton5.setText("editar");
-
         tblCargo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -76,93 +80,119 @@ public class gerenciaFuncoes extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tblCargo);
 
-        jButton7.setText("Voltar");
+        jLabel2.setText("Cargos");
 
-        jButton3.setText("apagar");
+        btnEditCargo.setText("editar");
+
+        btnVolta.setText("Voltar");
+        btnVolta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltaActionPerformed(evt);
+            }
+        });
+
+        btnApagaSetor.setText("apagar");
+        btnApagaSetor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApagaSetorActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Setores");
 
-        jButton6.setText("apagar");
+        btnApagaCargo.setText("apagar");
 
-        jButton1.setText("criar");
+        btnCriaSetor.setText("criar");
+        btnCriaSetor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCriaSetorActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("criar");
+        btnCriaCargo.setText("criar");
 
-        jButton2.setText("editar");
+        btnEditSetor.setText("editar");
+        btnEditSetor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditSetorActionPerformed(evt);
+            }
+        });
+
+        btnRecarrega.setText("Recarregar pagina");
+        btnRecarrega.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecarregaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnRecarrega)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(85, 85, 85)
+                                .addComponent(jLabel1)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton7)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(jLabel1)))
+                                    .addComponent(btnEditSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnApagaSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnCriaSetor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(24, 24, 24)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(72, 72, 72)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnEditCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnApagaCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnVolta)
+                                .addComponent(btnCriaCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(14, 14, 14))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(0, 93, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(99, 99, 99))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(68, 68, Short.MAX_VALUE)
-                            .addComponent(jLabel2)
-                            .addGap(162, 162, 162)))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVolta)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton4))
+                            .addComponent(btnCriaSetor)
+                            .addComponent(btnCriaCargo))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton5))
+                            .addComponent(btnEditSetor)
+                            .addComponent(btnEditCargo))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3)
-                            .addComponent(jButton6)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)))
-                .addGap(19, 19, 19))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(7, 7, 7)
-                    .addComponent(jLabel2)
-                    .addGap(18, 18, 18)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(18, Short.MAX_VALUE)))
+                            .addComponent(btnApagaSetor)
+                            .addComponent(btnApagaCargo))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnRecarrega)
+                .addGap(17, 17, 17))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -173,26 +203,97 @@ public class gerenciaFuncoes extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void mensagem(String mensagem, String tipo, String titulo){
+        JOptionPane optionPane = new JOptionPane(mensagem);
+            if (tipo.equals("Info")){
+                optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+            }
+            else if (tipo.equals("Error")){
+                optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+            }   
+                JDialog dialog = optionPane.createDialog(titulo);
+                dialog.setAlwaysOnTop(true);
+                dialog.setVisible(true);
+    }
+    
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
     carregarTabela();
     carregarTabela1();
     }//GEN-LAST:event_formWindowOpened
 
+    private void btnVoltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltaActionPerformed
+        telad.setVisible(true);
+        telad.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnVoltaActionPerformed
+
+    private void btnCriaSetorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriaSetorActionPerformed
+        criaSetor criaS = new criaSetor(control);
+        
+        criaS.setVisible(true);
+        criaS.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnCriaSetorActionPerformed
+
+    private void btnEditSetorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditSetorActionPerformed
+        if (tblSetor.getRowCount() > 0) {
+            if (tblSetor.getSelectedRow() != -1) {
+                int id_St = Integer.parseInt(
+                        String.valueOf(
+                                tblSetor.getValueAt(
+                                        tblSetor.getSelectedRow(), 0)));
+                
+                editaSetor editSt = new editaSetor(control, id_St);
+                editSt.setVisible(true);
+                editSt.setLocationRelativeTo(null);
+                   
+            }else{
+                mensagem("não foi selecionado nenhum registro", "Error", "erro ao editar");
+            }
+        }else{
+            mensagem("tabela vazia nada para eliminar", "Error", "erro ao editar");
+        }
+    }//GEN-LAST:event_btnEditSetorActionPerformed
+
+    private void btnApagaSetorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApagaSetorActionPerformed
+        if (tblSetor.getRowCount() > 0) {
+            if (tblSetor.getSelectedRow() != -1) {
+                int id_Sto = Integer.parseInt(
+                        String.valueOf(
+                                tblSetor.getValueAt(
+                                        tblSetor.getSelectedRow(), 0)));
+                
+                control.excluirSetor(id_Sto);
+                mensagem("apagado com sucesso", "Info", "dado apagado");
+                carregarTabela();      
+            }else{
+                mensagem("não foi selecionado nenhum registro", "Error", "erro ao apagar");
+            }
+        }else{
+            mensagem("tabela vazia nada para eliminar", "Error", "erro ao apagar");
+        }
+    }//GEN-LAST:event_btnApagaSetorActionPerformed
+
+    private void btnRecarregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecarregaActionPerformed
+        carregarTabela();
+        carregarTabela1();
+    }//GEN-LAST:event_btnRecarregaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton btnApagaCargo;
+    private javax.swing.JButton btnApagaSetor;
+    private javax.swing.JButton btnCriaCargo;
+    private javax.swing.JButton btnCriaSetor;
+    private javax.swing.JButton btnEditCargo;
+    private javax.swing.JButton btnEditSetor;
+    private javax.swing.JButton btnRecarrega;
+    private javax.swing.JButton btnVolta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

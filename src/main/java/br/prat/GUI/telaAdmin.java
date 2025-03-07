@@ -181,7 +181,7 @@ Usuario usr;
     }//GEN-LAST:event_formWindowOpened
 
     private void btnGerenciaFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenciaFuncActionPerformed
-        gerenciaFuncoes gera = new gerenciaFuncoes(control);
+        gerenciaFuncoes gera = new gerenciaFuncoes(control, this);
         
         gera.setVisible(true);
         gera.setLocationRelativeTo(null);

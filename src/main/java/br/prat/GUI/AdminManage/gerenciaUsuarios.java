@@ -1,5 +1,7 @@
 package br.prat.GUI.AdminManage;
 
+import br.prat.GUI.AdminManage.Usuarios.editarUsuario;
+import br.prat.GUI.AdminManage.Usuarios.criarUsuario;
 import br.prat.GUI.telaAdmin;
 import br.prat.controller.controller;
 import br.prat.entitys.Usuario;

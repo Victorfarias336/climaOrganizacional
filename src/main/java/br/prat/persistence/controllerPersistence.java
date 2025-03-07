@@ -73,4 +73,28 @@ public class controllerPersistence {
         return cargoJpa.findCargoEntities();
     }
 
+    public void criarSetor(Setor seto) {
+        setorJpa.create(seto);
+    }
+
+    public void editaSetor(Setor Set) {
+        try {
+            setorJpa.edit(Set);
+        } catch (Exception ex) {
+            Logger.getLogger(controllerPersistence.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public Setor buscaSetor(int id_St) {
+        return setorJpa.findSetor(id_St);
+    }
+
+    public void excluirSetor(int id_Sto) {
+        try {
+            setorJpa.destroy(id_Sto);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(controllerPersistence.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }

@@ -11,8 +11,7 @@ import java.util.List;
 
 public class controller {
 
-    controllerPersistence controlPersis;
-    private final Usuario user = new Usuario();
+    controllerPersistence controlPersis;  
     private tipoUsuario tipUsr = new tipoUsuario();
 
     public controller() {
@@ -36,7 +35,8 @@ public class controller {
     }
 
     public void cadastroUser(String nomeCad, String senhaCad) {
-
+        Usuario user = new Usuario();
+        
         tipUsr.setId(2);
         tipUsr.setDescrição("para usuario user");
         tipUsr.setTipo("user");
@@ -76,14 +76,15 @@ public class controller {
     }
 
     public void criarUser(String nome, String senha, String tipo) {
-        user.setNome(nome);
-        user.setSenha(senha);
+        Usuario usu = new Usuario();
+        usu.setNome(nome);
+        usu.setSenha(senha);
 
         tipUsr = this.trazerTipo(tipo);
         if (tipUsr != null) {
-            user.setUmtipo(tipUsr);
+            usu.setUmtipo(tipUsr);
         }
-        controlPersis.cadastrar(user);
+        controlPersis.cadastrar(usu);
     }
 
     private tipoUsuario trazerTipo(String tipo) {
@@ -123,5 +124,27 @@ public class controller {
 
     public List<Cargo> trazerCargos() {
         return controlPersis.trazerCargos();
+    }
+
+    public void criarSetor(String setor) {
+        
+        Setor novoSetor = new Setor();
+        novoSetor.setSetor(setor);
+
+        controlPersis.criarSetor(novoSetor);
+    }
+
+    public void editaSetor(Setor Set, String Seto) {
+        Set.setSetor(Seto);
+
+        controlPersis.editaSetor(Set);
+    }
+
+    public Setor trazerSetor(int id_St) {
+        return controlPersis.buscaSetor(id_St);
+    }
+
+    public void excluirSetor(int id_Sto) {
+        controlPersis.excluirSetor(id_Sto);
     }
 }

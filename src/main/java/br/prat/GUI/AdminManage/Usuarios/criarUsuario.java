@@ -1,4 +1,4 @@
-package br.prat.GUI.AdminManage;
+package br.prat.GUI.AdminManage.Usuarios;
 
 import br.prat.controller.controller;
 import br.prat.entitys.tipoUsuario;
