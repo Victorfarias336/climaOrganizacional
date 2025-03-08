@@ -186,6 +186,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="editar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditCargoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnVolta">
           <Properties>
@@ -212,6 +215,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="apagar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnApagaCargoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnCriaSetor">
           <Properties>
@@ -225,6 +231,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="criar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCriaCargoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnEditSetor">
           <Properties>

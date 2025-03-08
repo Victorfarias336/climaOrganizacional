@@ -2,6 +2,7 @@ br\prat\GUI\AdminManage\gerenciaUsuarios$7.class
 br\prat\GUI\AdminManage\Funções\editaSetor$1.class
 br\prat\entitys\tipoUsuario.class
 br\prat\GUI\AdminManage\Usuarios\criarUsuario$1.class
+br\prat\GUI\AdminManage\Funções\criaCargo$1.class
 br\prat\GUI\telaLogin.class
 br\prat\climaorganizacional\ClimaOrganizacional.class
 br\prat\jpaController\tipoUsuarioJpaController.class
@@ -17,6 +18,7 @@ br\prat\GUI\AdminManage\gerenciaFuncoes$5.class
 br\prat\GUI\telaCadastro$2.class
 br\prat\GUI\AdminManage\dashboardFeedbacks$1.class
 br\prat\GUI\AdminManage\Usuarios\editarUsuario$2.class
+br\prat\GUI\AdminManage\gerenciaFuncoes$10.class
 br\prat\GUI\telaAdmin$5.class
 br\prat\GUI\AdminManage\gerenciaUsuarios$1.class
 br\prat\GUI\telaAdmin$2.class
@@ -26,6 +28,7 @@ br\prat\GUI\AdminManage\tableFeedback$1.class
 br\prat\GUI\AdminManage\gerenciaUsuarios$3.class
 br\prat\GUI\dialogSalvar$2.class
 br\prat\GUI\telaCadastro$1.class
+br\prat\GUI\AdminManage\Funções\editaCargo$1.class
 br\prat\GUI\AdminManage\Usuarios\editarUsuario$3.class
 br\prat\GUI\AdminManage\Funções\criaSetor.class
 br\prat\GUI\telaAdmin$6.class
@@ -33,8 +36,10 @@ br\prat\GUI\AdminManage\gerenciaFuncoes$4.class
 br\prat\GUI\telaFeedback$3.class
 br\prat\jpaController\exceptions\NonexistentEntityException.class
 br\prat\GUI\AdminManage\Funções\editaSetor$2.class
+br\prat\GUI\AdminManage\gerenciaFuncoes$11.class
 br\prat\GUI\AdminManage\gerenciaFuncoes.class
 br\prat\GUI\AdminManage\Usuarios\criarUsuario$2.class
+br\prat\GUI\AdminManage\Funções\criaCargo.class
 br\prat\GUI\AdminManage\gerenciaFuncoes$1.class
 br\prat\GUI\telaAdmin.class
 br\prat\entitys\Setor.class
@@ -53,10 +58,12 @@ br\prat\GUI\dialogSalvar.class
 br\prat\GUI\AdminManage\Funções\editaSetor$3.class
 br\prat\GUI\AdminManage\tableFeedback$2.class
 br\prat\GUI\AdminManage\Usuarios\criarUsuario$3.class
+br\prat\GUI\AdminManage\Funções\editaCargo$2.class
 br\prat\GUI\AdminManage\gerenciaUsuarios$6.class
 br\prat\GUI\AdminManage\Usuarios\criarUsuario.class
 br\prat\GUI\telaFeedback.class
 br\prat\jpaController\exceptions\PreexistingEntityException.class
+br\prat\GUI\AdminManage\Funções\criaCargo$2.class
 br\prat\controller\controller.class
 br\prat\GUI\AdminManage\dashboardFeedbacks$2.class
 br\prat\GUI\AdminManage\gerenciaFuncoes$6.class
@@ -68,10 +75,13 @@ br\prat\GUI\AdminManage\dashboardFeedbacks.class
 br\prat\GUI\AdminManage\tableFeedback$3.class
 br\prat\GUI\AdminManage\Usuarios\editarUsuario.class
 br\prat\jpaController\SetorJpaController.class
+br\prat\GUI\AdminManage\gerenciaFuncoes$9.class
 br\prat\GUI\telaAdmin$4.class
 br\prat\GUI\AdminManage\gerenciaUsuarios$2.class
 br\prat\GUI\AdminManage\gerenciaUsuarios$5.class
 br\prat\GUI\telaAdmin$1.class
 br\prat\GUI\telaLogin$1.class
 br\prat\jpaController\exceptions\IllegalOrphanException.class
+br\prat\GUI\AdminManage\Funções\editaCargo$3.class
 br\prat\GUI\AdminManage\Funções\editaSetor.class
+br\prat\GUI\AdminManage\Funções\editaCargo.class

@@ -147,4 +147,26 @@ public class controller {
     public void excluirSetor(int id_Sto) {
         controlPersis.excluirSetor(id_Sto);
     }
+    
+    public void criarCargo(String cargo) {
+        
+        Cargo novoCargo = new Cargo();
+        novoCargo.setCargo(cargo);
+
+        controlPersis.criarCargo(novoCargo);
+    }
+
+    public void editaCargo(Cargo crg, String carg) {
+        crg.setCargo(carg);
+
+        controlPersis.editaCargo(crg);
+    }
+
+    public Cargo trazerCargo(int id_Cg) {
+        return controlPersis.buscaCargo(id_Cg);
+    }
+
+    public void excluirCargo(int id_Cgo) {
+        controlPersis.excluirCargo(id_Cgo);
+    }
 }

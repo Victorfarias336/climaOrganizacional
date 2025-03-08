@@ -1,6 +1,8 @@
 package br.prat.GUI.AdminManage;
 
+import br.prat.GUI.AdminManage.Funções.criaCargo;
 import br.prat.GUI.AdminManage.Funções.criaSetor;
+import br.prat.GUI.AdminManage.Funções.editaCargo;
 import br.prat.GUI.AdminManage.Funções.editaSetor;
 import br.prat.GUI.telaAdmin;
 import br.prat.controller.controller;
@@ -83,6 +85,11 @@ public class gerenciaFuncoes extends javax.swing.JFrame {
         jLabel2.setText("Cargos");
 
         btnEditCargo.setText("editar");
+        btnEditCargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditCargoActionPerformed(evt);
+            }
+        });
 
         btnVolta.setText("Voltar");
         btnVolta.addActionListener(new java.awt.event.ActionListener() {
@@ -101,6 +108,11 @@ public class gerenciaFuncoes extends javax.swing.JFrame {
         jLabel1.setText("Setores");
 
         btnApagaCargo.setText("apagar");
+        btnApagaCargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApagaCargoActionPerformed(evt);
+            }
+        });
 
         btnCriaSetor.setText("criar");
         btnCriaSetor.addActionListener(new java.awt.event.ActionListener() {
@@ -110,6 +122,11 @@ public class gerenciaFuncoes extends javax.swing.JFrame {
         });
 
         btnCriaCargo.setText("criar");
+        btnCriaCargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCriaCargoActionPerformed(evt);
+            }
+        });
 
         btnEditSetor.setText("editar");
         btnEditSetor.addActionListener(new java.awt.event.ActionListener() {
@@ -283,6 +300,52 @@ public class gerenciaFuncoes extends javax.swing.JFrame {
         carregarTabela();
         carregarTabela1();
     }//GEN-LAST:event_btnRecarregaActionPerformed
+
+    private void btnCriaCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriaCargoActionPerformed
+        criaCargo criaC = new criaCargo(control);
+        
+        criaC.setVisible(true);
+        criaC.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnCriaCargoActionPerformed
+
+    private void btnEditCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCargoActionPerformed
+        if (tblCargo.getRowCount() > 0) {
+            if (tblCargo.getSelectedRow() != -1) {
+                int id_Cg = Integer.parseInt(
+                        String.valueOf(
+                                tblCargo.getValueAt(
+                                        tblCargo.getSelectedRow(), 0)));
+                
+                editaCargo editCg = new editaCargo(control, id_Cg);
+                editCg.setVisible(true);
+                editCg.setLocationRelativeTo(null);
+                   
+            }else{
+                mensagem("não foi selecionado nenhum registro", "Error", "erro ao editar");
+            }
+        }else{
+            mensagem("tabela vazia nada para eliminar", "Error", "erro ao editar");
+        }
+    }//GEN-LAST:event_btnEditCargoActionPerformed
+
+    private void btnApagaCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApagaCargoActionPerformed
+        if (tblCargo.getRowCount() > 0) {
+            if (tblCargo.getSelectedRow() != -1) {
+                int id_Cgo = Integer.parseInt(
+                        String.valueOf(
+                                tblCargo.getValueAt(
+                                        tblCargo.getSelectedRow(), 0)));
+                
+                control.excluirCargo(id_Cgo);
+                mensagem("apagado com sucesso", "Info", "dado apagado");
+                carregarTabela1();      
+            }else{
+                mensagem("não foi selecionado nenhum registro", "Error", "erro ao apagar");
+            }
+        }else{
+            mensagem("tabela vazia nada para eliminar", "Error", "erro ao apagar");
+        }
+    }//GEN-LAST:event_btnApagaCargoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

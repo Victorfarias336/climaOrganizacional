@@ -96,5 +96,29 @@ public class controllerPersistence {
             Logger.getLogger(controllerPersistence.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void criarCargo(Cargo carg) {
+        cargoJpa.create(carg);
+    }
+
+    public void editaCargo(Cargo crg) {
+        try {
+            cargoJpa.edit(crg);
+        } catch (Exception ex) {
+            Logger.getLogger(controllerPersistence.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public Cargo buscaCargo(int id_Cg) {
+        return cargoJpa.findCargo(id_Cg);
+    }
+
+    public void excluirCargo(int id_Cgo) {
+        try {
+            cargoJpa.destroy(id_Cgo);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(controllerPersistence.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
 }
