@@ -11,8 +11,7 @@ import java.util.List;
 
 public class controller {
 
-    controllerPersistence controlPersis;  
-    private tipoUsuario tipUsr = new tipoUsuario();
+    controllerPersistence controlPersis;
 
     public controller() {
         controlPersis = new controllerPersistence();
@@ -36,14 +35,15 @@ public class controller {
 
     public void cadastroUser(String nomeCad, String senhaCad) {
         Usuario user = new Usuario();
-        
-        tipUsr.setId(2);
-        tipUsr.setDescrição("para usuario user");
-        tipUsr.setTipo("user");
 
+        List<tipoUsuario> tipUsr = this.trazerTipos();
+        
         user.setNome(nomeCad);
         user.setSenha(senhaCad);
-        user.setUmtipo(tipUsr);
+        if (tipUsr != null && !tipUsr.isEmpty()) {
+            tipoUsuario TipUsu = tipUsr.get(tipUsr.size() - 1);//pega tipo user
+            user.setUmtipo(TipUsu);
+        }
         controlPersis.cadastrar(user);
     }
 
@@ -77,12 +77,14 @@ public class controller {
 
     public void criarUser(String nome, String senha, String tipo) {
         Usuario usu = new Usuario();
+        tipoUsuario tipUse = new tipoUsuario();
+
         usu.setNome(nome);
         usu.setSenha(senha);
 
-        tipUsr = this.trazerTipo(tipo);
-        if (tipUsr != null) {
-            usu.setUmtipo(tipUsr);
+        tipUse = this.trazerTipo(tipo);
+        if (tipUse != null) {
+            usu.setUmtipo(tipUse);
         }
         controlPersis.cadastrar(usu);
     }
@@ -103,12 +105,14 @@ public class controller {
     }
 
     public void editaUser(Usuario usu, String nome, String senha, String tipo) {
+        tipoUsuario tipusr = new tipoUsuario();
+
         usu.setNome(nome);
         usu.setSenha(senha);
 
-        tipUsr = this.trazerTipo(tipo);
-        if (tipUsr != null) {
-            usu.setUmtipo(tipUsr);
+        tipusr = this.trazerTipo(tipo);
+        if (tipusr != null) {
+            usu.setUmtipo(tipusr);
         }
 
         controlPersis.editaUser(usu);
@@ -127,7 +131,7 @@ public class controller {
     }
 
     public void criarSetor(String setor) {
-        
+
         Setor novoSetor = new Setor();
         novoSetor.setSetor(setor);
 
@@ -147,9 +151,9 @@ public class controller {
     public void excluirSetor(int id_Sto) {
         controlPersis.excluirSetor(id_Sto);
     }
-    
+
     public void criarCargo(String cargo) {
-        
+
         Cargo novoCargo = new Cargo();
         novoCargo.setCargo(cargo);
 
