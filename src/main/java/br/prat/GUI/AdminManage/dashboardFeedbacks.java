@@ -175,8 +175,8 @@ public class dashboardFeedbacks extends javax.swing.JFrame {
 
         XYSeriesCollection dataset = new XYSeriesCollection(series);
 
-        JFreeChart lChart = ChartFactory.createXYLineChart("Grafico de linha",
-                "mês", "media por mês", dataset, PlotOrientation.VERTICAL, true, true, false);
+        JFreeChart lChart = ChartFactory.createXYLineChart("Media por mês",
+                "", "", dataset, PlotOrientation.VERTICAL, true, true, false);
 
         XYPlot linePlot = lChart.getXYPlot();
         linePlot.setBackgroundPaint(Color.white);
@@ -224,9 +224,9 @@ public class dashboardFeedbacks extends javax.swing.JFrame {
         }
 
         JFreeChart hBarchart = ChartFactory.createBarChart(
-                "barras hon", //titulo
-                "categorias", //eixo x
-                "valores", //eixo y
+                "Setores mais satisfeitos", //titulo
+                "", //legenda eixo x
+                "", //legenda eixo y
                 dataset, //dados
                 PlotOrientation.HORIZONTAL,
                 true, //legenda
@@ -264,7 +264,7 @@ public class dashboardFeedbacks extends javax.swing.JFrame {
             donDataset.setValue(entry.getKey(), entry.getValue());
         }
 
-        JFreeChart DonChart = ChartFactory.createRingChart("grafico de donut",
+        JFreeChart DonChart = ChartFactory.createRingChart("Setores que fazem feedback",
                 donDataset, true, true, false);
         RingPlot donPlot = (RingPlot) DonChart.getPlot();
         donPlot.setCircular(true);
@@ -308,13 +308,13 @@ public class dashboardFeedbacks extends javax.swing.JFrame {
 
         // Passo 2: Preparar os dados para o gráfico
         for (Map.Entry<String, Double> entry : cargoMediaPerg4.entrySet()) {
-            dataset.addValue(entry.getValue(), "Média de Perg4", entry.getKey());
+            dataset.addValue(entry.getValue(), "Média", entry.getKey());
         }
 
         JFreeChart hBarVchart = ChartFactory.createBarChart(
-                "barras vertical", //titulo
-                "categorias", //eixo x
-                "valores", //eixo y
+                "Cargos mais satisfeitos", //titulo
+                "", //legenda eixo x
+                "", //legenda eixo y
                 dataset, //dados
                 PlotOrientation.VERTICAL,
                 true, //legenda
