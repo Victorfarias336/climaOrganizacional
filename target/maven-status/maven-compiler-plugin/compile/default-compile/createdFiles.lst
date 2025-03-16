@@ -44,6 +44,7 @@ br\prat\GUI\AdminManage\gerenciaFuncoes$1.class
 br\prat\GUI\telaAdmin.class
 br\prat\entitys\Setor.class
 br\prat\GUI\AdminManage\gerenciaFuncoes$7.class
+br\prat\climaorganizacional\ClimaOrganizacional$1.class
 br\prat\entitys\Usuario.class
 br\prat\GUI\AdminManage\tableFeedback.class
 br\prat\GUI\AdminManage\gerenciaUsuarios.class
